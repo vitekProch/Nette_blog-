@@ -1,0 +1,40 @@
+{block content}
+<div class="container">
+    <div>
+        <img class="img-fluid" src="{$basePath}/img/uvod1.jpg">
+    </div>
+    <div class="row mb-2">
+        {foreach $pedingArticle as $pedingArticles}
+            <div class="col-md-6">
+                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col-8 p-4 d-flex flex-column position-static">
+                        <h4 class="mb-2 font-weight-bold">{$pedingArticles->title}</h4>
+                        <span class="card-text mb-auto post" >{$pedingArticles->content|truncate:100}</span>
+                        <div class="date">{$pedingArticles->created_at|date:'F j, Y'}</div>
+                        <a class="stretched-link" n:href="EditorProfile:show $pedingArticles->id">Continue reading</a>
+                    </div>
+                    <div class="col-4 d-none d-lg-block">
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+                    </div>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+</div>
+<div class="text-center">
+    {if !$paginator->isFirst()}
+        <a n:href="accept, 1">První</a>
+        &nbsp;|&nbsp;
+        <a n:href="accept, $paginator->page-1">Předchozí</a>
+        &nbsp;|&nbsp;F
+    {/if}
+
+        Stránka {$paginator->getPage()} z {$paginator->getPageCount()}
+
+        {if !$paginator->isLast()}
+        &nbsp;|&nbsp;
+        <a n:href="accept, $paginator->getPage() + 1">Další</a>
+        &nbsp;|&nbsp;
+        <a n:href="accept, $paginator->getPageCount()">Poslední</a>
+    {/if}
+</div>

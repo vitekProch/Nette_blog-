@@ -1,0 +1,31 @@
+{block content}
+<div class="container">
+	<main role="main">
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="display-3">Hello, world!</h1>
+				<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+				<p><a class="btn btn-primary btn-lg" n:href="Article:article" role="button">Learn more &raquo;</a></p>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row row-cols-3">
+				{foreach $articles as $article}
+					<div class="col-md-4" >
+						<h1>{$article->title}</h1>
+						<span>{$article->content|truncate:500}</span>
+						<p><a class="btn btn-secondary" n:href="Posts:show $article->id" role="button">View details &raquo;</a></p>
+					</div>
+				{/foreach}
+			</div>
+		</div>
+	</main>
+</div>
+
+
+
+
+

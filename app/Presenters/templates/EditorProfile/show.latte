@@ -1,0 +1,19 @@
+{block content}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p><a n:href="Article:article">← zpět na výpis příspěvků</a></p>
+            <div class="jumbotron">
+                <h1 class="article_title" n:block="title">{$post->title}</h1>
+
+                <div class="post mt-5">{$post->content}</div>
+                <div class="date date_color mt-4 font-weight-bold">{$post->created_at|date:'F j, Y'}</div>
+            </div>
+
+            <div class="mt-5">
+                <span><a class="btn btn-outline-dark" n:href="Approved!, $post->id" onClick="return confirm('Opravdu schválit?');"">Schválit</a></span>
+                <a class="btn btn-outline-dark" n:href="deny!, $post ->id" onClick="return confirm('Opravdu zamítnout?');">Zamítnout</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form n:name=registrationForm class="background_image">
+                    <table class="m-auto table_background">
+                        <h1 class="text-center head_color" n:block=title>Registrace</h1>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=username>Jméno:  </label></th>
+                            <td><input n:name=username size=20></td>
+                        </tr>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=password>Heslo: </label></th>
+                            <td><input n:name=password></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=passwordVerify>Heslo pro kontrolu: </label></th>
+                            <td><input n:name=passwordVerify></td>
+                        </tr>
+                        <th>
+
+                        </th>
+                        <td>
+                            <input class="btn btn-outline-light" n:name=send>
+                        </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>

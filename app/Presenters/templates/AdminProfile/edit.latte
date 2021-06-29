@@ -1,0 +1,38 @@
+{block content}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $users_value as $users}
+                    <tr>
+                        <th scope="row">{$users->id}</th>
+                        <td>{$users->username}</td>
+                        <td>{$users->role}</td>
+                        <td><a class="btn btn-success" n:href="edit $users->id" ">EDIT</a></td>
+                        <td><a class="btn btn-danger" n:href="delete!, $users->id" onClick="return confirm('Opravdu smazat?');">Delete</a></td>
+                    </tr>
+                {/foreach}
+                <tr class="table-active">
+                    <th scope="row">{$user_id->id}</th>
+                    <td>{$user_id->username}</td>
+                    <form n:name=editForm>
+                        <td><input n:name=role></td>
+                        <td><input class="btn btn-success" n:name=save></td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
