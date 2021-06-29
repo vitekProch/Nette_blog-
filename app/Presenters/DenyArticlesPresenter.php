@@ -4,7 +4,7 @@
 namespace App\Presenters;
 use Nette;
 
-class UserProfilePresenter extends BasePresenter
+class DenyArticlesPresenter extends BasePresenter
 {
     public function startup()
     {
@@ -13,11 +13,10 @@ class UserProfilePresenter extends BasePresenter
             $this->redirect('Sign:in');
         }
     }
-
-    public function renderUser(int $page = 1): void
+    public function renderDeny(int $page = 1)
     {
         // Zjistíme si celkový počet publikovaných článků
-        $articlesCount = $this->articleModel->getUserArticleCountByStatus(1,$this->user->id);
+        $articlesCount = $this->articleModel->getUserArticleCountByStatus(2,$this->user->id);
 
         // Vyrobíme si instanci Paginatoru a nastavíme jej
         $paginator = new Nette\Utils\Paginator;
@@ -26,9 +25,9 @@ class UserProfilePresenter extends BasePresenter
         $paginator->setPage($page); // číslo aktuální stránky
 
         // Z databáze si vytáhneme omezenou množinu článků podle výpočtu Paginatoru
-        $userArticle = $this->articleModel->findUserArticlesByStatus($this->user->id, 1, $paginator->getLength(),$paginator->getOffset());
+        $denyArticle = $this->articleModel->findUserArticlesByStatus($this->user->id, 2, $paginator->getLength(),$paginator->getOffset());
         // a také samotný Paginator pro zobrazení možností stránkování
         $this->template->paginator = $paginator;
-        $this->template->userArticle = $userArticle;
+        $this->template->denyArticle = $denyArticle;
     }
 }
