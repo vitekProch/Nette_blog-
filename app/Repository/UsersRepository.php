@@ -3,16 +3,13 @@
 
 namespace App\Repository;
 use Nette;
-use PHPStan\Type\StringType;
-
 class UsersRepository extends BaseRepository
 {
-    public function getUsers()
+    public const TABLE_NAME_USERS = 'users';
+
+
+    public function getUsers():Nette\Database\Table\Selection
     {
-        return $this->database->table('users');
-    }
-    public function deleteUsers()
-    {
-        return $this->database->table('users');
+        return $this->database->table(self::TABLE_NAME_USERS);
     }
 }

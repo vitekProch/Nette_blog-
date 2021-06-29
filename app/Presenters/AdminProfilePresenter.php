@@ -2,7 +2,6 @@
 
 
 namespace App\Presenters;
-use Nette;
 use Nette\Application\UI\Form;
 
 class AdminProfilePresenter extends BasePresenter
@@ -51,7 +50,7 @@ class AdminProfilePresenter extends BasePresenter
             $this->flashMessage('Nemáš dostatečné oprávnění');
             $this->redirect('AdminProfile:admin');
         }
-        $userId = $this->usersModel->deleteUsers()->get($id);
+        $userId = $this->usersModel->getUsers()->get($id);
         $userId->delete();
 
         $this->flashMessage("Smazáno");

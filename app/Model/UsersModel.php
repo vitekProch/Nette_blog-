@@ -22,12 +22,8 @@ class UsersModel
         $this->usersRepository = $usersRepository;
     }
 
-    public function getUsers()
+    public function getUsers():Nette\Database\Table\Selection
     {
         return $this->usersRepository->getUsers();
-    }
-    public function deleteUsers()
-    {
-        return $this->usersRepository->deleteUsers();
     }
 }

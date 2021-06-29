@@ -5,6 +5,7 @@ namespace App\Model;
 
 use App\Repository\ArticleRepository;
 use Nette\Utils\Arrays;
+use Nette;
 
 class ArticleModel
 {
@@ -26,7 +27,7 @@ class ArticleModel
         $this->articleRepository = $articleRepository;
     }
 
-    public function getPublicArticles(): \Nette\Database\Table\Selection
+    public function getPublicArticles(): Nette\Database\Table\Selection
     {
         return $this->articleRepository->getPublicArticles();
     }
@@ -34,7 +35,7 @@ class ArticleModel
     /**
      * Vyhledávání
      */
-    public function findArticlesBySearch($search_value)
+    public function findArticlesBySearch($search_value): Nette\Database\Table\Selection
     {
         return $this->articleRepository->findArticlesBySearch($search_value);
     }
@@ -46,7 +47,7 @@ class ArticleModel
     /**
      * @param int $status Status článku: 0-čekající, 1-schvaleno, 2-zamitnuto
      */
-    public function findArticlesByStatus($limit,$status ,int $offset=0)
+    public function findArticlesByStatus($limit,$status ,int $offset=0): Nette\Database\ResultSet
     {
         return $this->articleRepository->findArticlesByStatus($limit,$status,$offset);
     }
@@ -58,16 +59,12 @@ class ArticleModel
     {
         return $this->articleRepository->findUserArticlesByStatus($id, $status, $limit, $offset);
     }
-    public function findUserDenyArticles($id)
-    {
-        return $this->articleRepository->findUserDenyArticles($id);
-    }
     public function getUserArticleCountByStatus(int $status, int $id): int
     {
         return $this->articleRepository->getUserArticleCountByStatus($status, $id);
     }
 
-    public function author($role, $author_id, $article_id)
+    public function author($role, $author_id, $article_id): int
     {
         if ($author_id === $article_id or ($role === ['editor']))
         {

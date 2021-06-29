@@ -5,12 +5,9 @@ namespace App\Presenters;
 
 
 use App\Forms\FormFactory;
-use App\Model\ArticleRepository;
 use App\Model\UserManager;
 use Nette\Application\UI\Form;
-use Nette\Application\UI\Presenter;
-use Nette\ComponentModel\IComponent;
-use Nette;
+
 
 class RegistrationPresenter extends BasePresenter
 {
@@ -19,6 +16,7 @@ class RegistrationPresenter extends BasePresenter
 
     public function __construct(UserManager $userManager,FormFactory $registrationForm)
     {
+        parent::__construct();
         $this->userManager = $userManager;
         $this->registrationForm = $registrationForm;
     }

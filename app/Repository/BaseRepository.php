@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repository;
-use App\Repository\ArticleRepository;
 use Nette;
 
 class BaseRepository

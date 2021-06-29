@@ -19,9 +19,7 @@ class EditorProfilePresenter extends BasePresenter
 
     public function actionShow($id)
     {
-        $this->template->users = $this->usersModel->getUsers();
         $this->template->post = $this->articleModel->getPublicArticles()->get($id);
-        $this->template->comments = $this->commentModel->getPublicComments($id);
     }
 
     public function actionAccept(int $page = 1)
