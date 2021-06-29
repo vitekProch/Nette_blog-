@@ -33,7 +33,7 @@
 					<a class="nav-link" n:href="Article:article">Články</a>
 				</li>
 				<li class="nav-item">
-					<a n:href="Registration:Register" class="nav-link">Registrovat</a>
+					<a n:if="$user->getRoles() === ['guest']" n:href="Registration:Register" class="nav-link">Registrovat</a>
 				</li>
 				<li class="nav-item">
 					{if $user->loggedIn}

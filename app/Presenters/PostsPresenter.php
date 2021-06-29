@@ -2,7 +2,6 @@
 
 
 namespace App\Presenters;
-use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 
 class PostsPresenter extends BasePresenter

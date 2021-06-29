@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace App\Presenters;
 
-use App\Model\ArticleModel;
-use App\Model\ArticleRepository;
-use Nette;
-
-
 class HomepagePresenter extends BasePresenter
 {
     public function renderDefault()

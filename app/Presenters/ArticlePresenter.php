@@ -3,10 +3,6 @@
 
 namespace App\Presenters;
 use Nette;
-use App\Components\CategoryForm;
-use Nette\Application\UI\Form;
-use App\Model\ArticleRepository;
-
 class ArticlePresenter extends BasePresenter
 {
     public function renderArticle(int $page = 1): void

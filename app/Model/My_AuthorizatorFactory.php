@@ -2,11 +2,7 @@
 
 
 namespace App\Model;
-use Nette;
-use Nette\Security\IAuthorizator;
 use Nette\Security\Permission;
-use Nette\Security\IResource;
-
 
 class My_AuthorizatorFactory
 {
