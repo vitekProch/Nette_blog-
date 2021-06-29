@@ -34,7 +34,7 @@ class UserProfilePresenter extends BasePresenter
     public function renderDeny(int $page = 1)
     {
         // Zjistíme si celkový počet publikovaných článků
-        $articlesCount = $this->articleModel->getUserArticleCountByStatus(1,$this->user->id);
+        $articlesCount = $this->articleModel->getUserArticleCountByStatus(2,$this->user->id);
 
         // Vyrobíme si instanci Paginatoru a nastavíme jej
         $paginator = new Nette\Utils\Paginator;
