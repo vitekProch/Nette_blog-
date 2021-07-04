@@ -1,0 +1,46 @@
+.footer-container{
+    padding: 50px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.footerHeading{
+    font-size: 28px;
+    font-weight: bold;
+}
+.footer-container a{
+    font-size: 16px;
+}
+#heslo_formular{
+    padding-right: 75px;
+}
+.background_image{
+    background-image:url("https://cdn.stocksnap.io/img-thumbs/960w/sky-stars_QKLA2F9TKK.jpg");
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.table_background{
+    color: white;
+}
+.head_color{
+    color: white;
+}
+
+.article_title{
+    font-size: 49px;
+}
+.barva{
+    color: gray;
+    border: solid black 5px;
+    height: 500px;
+}
+.date{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+.newComments{
+    margin-top: 50px;
+}

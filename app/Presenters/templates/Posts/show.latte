@@ -1,0 +1,59 @@
+{block content}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p><a n:href="Article:article">← zpět na výpis příspěvků</a></p>
+            <div class="jumbotron">
+                <h1 class="article_title" n:block="title">{$post->title}</h1>
+
+                <div class="post mt-5">{$post->content}</div>
+                <div class="date date_color mt-4 font-weight-bold">{$post->created_at|date:'F j, Y'}</div>
+            </div>
+
+            <div class="mt-5">
+                <span><a class="btn btn-outline-dark" n:href="edit $post->id" n:if="(($user->id === $author_id) or ($user->getRoles() === ['editor']))" role="button" ">Upravit příspěvek</a></span>
+                <a class="btn btn-outline-dark" n:href="delete!, $post ->id" n:if="(($user->id === $author_id) or ($user->getRoles() === ['editor']))" onClick="return confirm('Opravdu smazat?');">Smazat celý článek</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="comments mt-5">
+                <h2>Komentáře:</h2>
+                {foreach $comments as $comment}
+                    <p><b><a href="mailto :{$comment->email}" n:tag-if="$comment->email">{$comment->name}</a></b><span class="font-weight-bolder mr-1"> napsal: </span>{$comment->content}</p>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="row newComments">
+            <div class="col">
+                <form n:if="$user->loggedIn" n:name=commentForm>
+                    <h2>Přidat komentář</h2>
+                    <table>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=name>Jméno  </label></th>
+                            <td><input  n:name=name></td>
+                        </tr>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=email>E-mail: </label></th>
+                            <td><input n:name=email></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th class="text-right pr-2"><label n:name=content>Komentář: </label></th>
+                            <td><input n:name=content></td>
+                        </tr>
+                        <th>
+
+                        </th>
+                        <td>
+                            <input class="btn btn-outline-primary" n:name=send>
+                        </td>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

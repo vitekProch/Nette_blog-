@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{$basePath}/css/my_css_style.css">
+	<link rel="stylesheet" href="{$basePath}/bootstrap/bootstrap/css/bootstrap.min.css">
+	<script src="{$basePath}/bootstrap/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://ajax.hoohleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	{block headBlock}{/block}
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+</head>
+<body>
+{**  navigacni menu *}
+<div class="container">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" n:href="Homepage:default">Uvodní stránka<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" n:href="Article:article">Články</a>
+				</li>
+				<li class="nav-item">
+					<a n:if="$user->getRoles() === ['guest']" n:href="Registration:Register" class="nav-link">Registrovat</a>
+				</li>
+				<li class="nav-item">
+					<a n:if="$user->isAllowed('adminPage', 'view')" n:href="AdminProfile:admin" class="nav-link">Upravit role</a>
+				</li>
+				<li class="nav-item">
+					<a n:if="$user->isAllowed('editorPage', 'view')" n:href="EditorProfile:accept" class="nav-link">Schválit články</a>
+				</li>
+				<li class="nav-item">
+					<a n:if="$user->loggedIn"  n:href="UserProfile:user" class="nav-link">Můj profil</a>
+				</li>
+				<li class="nav-item ml-3">
+					{if $user->loggedIn}
+						<a class="nav-link" n:href="Sign:out">Odhlásit</a>
+					{else}
+						<a class="nav-link" n:href="Sign:in">Přihlásit</a>
+					{/if}
+				</li>
+			</ul>
+			<form n:name="searchForm" class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Search" aria-label="Search">
+				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send">
+			</form>
+		</div>
+	</nav>
+</div>
+
+<div class="container container-fluid mt-5 pt-5">
+	<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+	{include content}
+</div>
+
+<div class="container jumbotron footer-container">
+	<div class="row">
+		<div class="col">
+			<span class="footerHeading">Nejnovější články</span>
+			<ul>
+				{foreach $footer_articles as $footer_article}
+					<li>
+						<a class="title" href="{link Posts:show $footer_article->id}">
+							{$footer_article->title}
+						</a>
+					</li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+</div>
+
+		{block scripts}
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+		{/block}
+</body>
+</html>

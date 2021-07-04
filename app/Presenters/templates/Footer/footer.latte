@@ -1,0 +1,30 @@
+{block content}
+    <div class="container jumbotron footer-container">
+        <div class="row">
+            <div class="col">
+                <span class="footerHeading">Nejnovější články</span>
+                <ul>
+                    {foreach $footer_articles as $footer_article}
+                        <li>
+                            <a class="title" href="{link Posts:show $footer_article->id}">
+                                {$footer_article->title}
+                            </a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="footerHeading">Nejčtenější články</span>
+                    <ul>
+                        <li><a href="#">článek ABC</a></li>
+                        <li><a href="#">článek ABC</a></li>
+                        <li><a href="#">článek ABC</a></li>
+                        <li><a href="#">článek ABC</a></li>
+                        <li><a href="#">článek ABC</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
