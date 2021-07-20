@@ -4,16 +4,16 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1 class="display-3">Zdravím tě na svém blogu!</h1>
-				<p>Tento blog, jsem založil z důvodu tréninku programování v jazyce php za pomocí knihovny Nette.</p>
+				<p>Tento blog, jsem založil z důvodu tréninku programování v jazyce php za pomocí frameworku Nette.</p>
 				<p><a class="btn btn-primary btn-lg" n:href="Article:article" role="button">Podívej se na další články &raquo;</a></p>
 			</div>
 		</div>
 
 		<div class="container">
-			<div class="row row-cols-3">
+			<div class="row">
 				{foreach $articles as $article}
 					<div class="col-md-4" >
-						<h1>{$article->title}</h1>
+						<h1 class="mr-1">{$article->title}</h1>
 						<span>{$article->content|truncate:500}</span>
 						<p><a class="btn btn-secondary" n:href="Posts:show $article->id" role="button">View details &raquo;</a></p>
 					</div>
