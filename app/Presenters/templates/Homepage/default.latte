@@ -13,7 +13,7 @@
 			<div class="row">
 				{foreach $articles as $article}
 					<div class="col-md-4" >
-						<h1 class="mr-1">{$article->title}</h1>
+						<h1>{$article->title}</h1>
 						<span>{$article->content|truncate:500}</span>
 						<p><a class="btn btn-secondary" n:href="Posts:show $article->id" role="button">View details &raquo;</a></p>
 					</div>
